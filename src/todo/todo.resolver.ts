@@ -24,8 +24,7 @@ export class TodoResolver {
     createTodo(
         @Args('createTodoInput') createTodoInput: CreateTodoInput) {
 
-            console.log({createTodoInput})
-        return null;
+        return  this.todoService.create( createTodoInput );
     }
 
     updateTodo() {
