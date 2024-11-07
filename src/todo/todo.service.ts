@@ -42,4 +42,10 @@ export class TodoService {
         return todoToUpdate;
     }
 
+    delete( id: number): Boolean {
+        const todo = this.findOne(id);
+        this.todos = this.todos.filter( todo => todo.id !== id);
+        return true;
+    }
+
 }

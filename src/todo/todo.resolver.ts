@@ -3,7 +3,7 @@ import { Todo } from './entity/todo.entity';
 import { TodoService } from './todo.service';
 import { CreateTodoInput, UpdateTodoInput } from './dto/inputs';
 
-@Resolver()
+@Resolver(() => Todo)
 export class TodoResolver {
 
     constructor( 
@@ -33,8 +33,11 @@ export class TodoResolver {
     ) {
         return this.todoService.update( updateTodoInput );
     }
-
-    removeTodo() {
-
+    
+    @Mutation( () => Boolean, { name: 'removeTodo'})
+    removeTodo(
+        @Args('id', { type: () => Int}) id: number
+    ) {
+        return this.todoService.delete(id);
     }
 }
