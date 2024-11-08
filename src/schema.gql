@@ -13,7 +13,10 @@ type Query {
   hello: String!
   randomNumber: Float!
   randomZeroTo(to: Int): Int!
-  todos: [Todo!]!
+  todos(
+    """Get todos by done status"""
+    status: Boolean
+  ): [Todo!]!
   todo(id: Int!): Todo!
 }
 
